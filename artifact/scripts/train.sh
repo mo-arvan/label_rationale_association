@@ -1,1 +1,2 @@
+#!/bin/bash
 python input_to_label_and_rationale.py --output_dir models --task_name esnli --do_train --num_train_epochs 1 --per_device_train_batch_size 64 --per_device_eval_batch_size 64 --logging_first_step True --logging_steps 1 --save_steps 1 --save_total_limit 11 --seed 42 --early_stopping_threshold 10

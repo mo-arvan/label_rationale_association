@@ -1,0 +1,2 @@
+#!/bin/bash
+python input_to_label_and_rationale.py --output_dir models --task_name esnli --pretrained_model_file models/062222_183837 --per_device_eval_batch_size 64 --seed 42 --dev_predict --test_predict

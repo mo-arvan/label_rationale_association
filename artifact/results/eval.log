@@ -1,0 +1,111 @@
+root@c7bdc4989f04:/workspace# python input_to_label_and_rationale.py --output_dir models --task_name esnli --pretrained_model_file models/062222_183837 --per_device_eval_batch_size 64 --seed 42 --dev_predict --test_predict
+wandb: WARNING W&B installed but not logged in.  Run `wandb login` or set the WANDB_API_KEY env variable.
+06/23/2022 05:45:03 - INFO - transformers.training_args -   PyTorch: setting up devices
+06/23/2022 05:45:03 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+06/23/2022 05:45:03 - INFO - __main__ -   Save path: models/062222_183837
+06/23/2022 05:45:03 - INFO - __main__ -   Git branch: main
+06/23/2022 05:45:03 - INFO - __main__ -   Git hash: 502e6d8130c334e9c99cb18fa6099ca85d3ad21e
+06/23/2022 05:45:03 - INFO - __main__ -   Loading pretrained tokenizer...
+06/23/2022 05:45:03 - INFO - transformers.tokenization_utils -   Model name 'models/062222_183837' not found in model shortcut name list (t5-small, t5-base, t5-large, t5-3b, t5-11b). Assuming 'models/062222_183837' is a path, a model identifier, or url to a directory containing tokenizer files.
+06/23/2022 05:45:03 - INFO - transformers.tokenization_utils -   loading file models/062222_183837/spiece.model
+06/23/2022 05:45:03 - INFO - transformers.tokenization_utils -   loading file models/062222_183837/added_tokens.json
+06/23/2022 05:45:03 - INFO - transformers.tokenization_utils -   loading file models/062222_183837/special_tokens_map.json
+06/23/2022 05:45:03 - INFO - transformers.tokenization_utils -   loading file models/062222_183837/tokenizer_config.json
+06/23/2022 05:45:03 - INFO - transformers.tokenization_utils -   Assigning [EOS] to the eos_token key of the tokenizer
+06/23/2022 05:45:03 - INFO - transformers.configuration_utils -   loading configuration file models/062222_183837/checkpoint-1/config.json
+06/23/2022 05:45:03 - INFO - transformers.configuration_utils -   Model config T5Config {
+  "architectures": [
+    "T5ForConditionalGeneration"
+  ],
+  "d_ff": 3072,
+  "d_kv": 64,
+  "d_model": 768,
+  "decoder_start_token_id": 0,
+  "dropout_rate": 0.1,
+  "eos_token_id": 1,
+  "initializer_factor": 1.0,
+  "is_encoder_decoder": true,
+  "layer_norm_epsilon": 1e-06,
+  "model_type": "t5",
+  "n_positions": 512,
+  "num_heads": 12,
+  "num_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "relative_attention_num_buckets": 32,
+  "task_specific_params": {
+    "summarization": {
+      "early_stopping": true,
+      "length_penalty": 2.0,
+      "max_length": 200,
+      "min_length": 30,
+      "no_repeat_ngram_size": 3,
+      "num_beams": 4,
+      "prefix": "summarize: "
+    },
+    "translation_en_to_de": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to German: "
+    },
+    "translation_en_to_fr": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to French: "
+    },
+    "translation_en_to_ro": {
+      "early_stopping": true,
+      "max_length": 300,
+      "num_beams": 4,
+      "prefix": "translate English to Romanian: "
+    }
+  },
+  "vocab_size": 32101
+}
+
+06/23/2022 05:45:03 - INFO - transformers.modeling_utils -   loading weights file models/062222_183837/checkpoint-1/pytorch_model.bin
+06/23/2022 05:45:07 - INFO - nlp.load -   Checking /root/.cache/huggingface/datasets/98731035d759519dcb33c8c643a82809cdea5cce8c1b2be28770a091fe558cdb.79ee35f146d3190b716f6e98516a3e11e8a0c9d469df18dd15fc7b4e42540302.py for additional imports.
+06/23/2022 05:45:07 - INFO - nlp.load -   Found main folder for dataset https://s3.amazonaws.com/datasets.huggingface.co/nlp/datasets/esnli/esnli.py at /opt/conda/lib/python3.8/site-packages/nlp/datasets/esnli
+06/23/2022 05:45:07 - INFO - nlp.load -   Found specific version folder for dataset https://s3.amazonaws.com/datasets.huggingface.co/nlp/datasets/esnli/esnli.py at /opt/conda/lib/python3.8/site-packages/nlp/datasets/esnli/143e9598bb0a19a5adf08155d7a1c3c42a632bfac18a8899ef8d9a7ff48aee53
+06/23/2022 05:45:07 - INFO - nlp.load -   Found script file from https://s3.amazonaws.com/datasets.huggingface.co/nlp/datasets/esnli/esnli.py to /opt/conda/lib/python3.8/site-packages/nlp/datasets/esnli/143e9598bb0a19a5adf08155d7a1c3c42a632bfac18a8899ef8d9a7ff48aee53/esnli.py
+06/23/2022 05:45:07 - INFO - nlp.load -   Found dataset infos file from https://s3.amazonaws.com/datasets.huggingface.co/nlp/datasets/esnli/dataset_infos.json to /opt/conda/lib/python3.8/site-packages/nlp/datasets/esnli/143e9598bb0a19a5adf08155d7a1c3c42a632bfac18a8899ef8d9a7ff48aee53/dataset_infos.json
+06/23/2022 05:45:07 - INFO - nlp.load -   Found metadata file for dataset https://s3.amazonaws.com/datasets.huggingface.co/nlp/datasets/esnli/esnli.py at /opt/conda/lib/python3.8/site-packages/nlp/datasets/esnli/143e9598bb0a19a5adf08155d7a1c3c42a632bfac18a8899ef8d9a7ff48aee53/esnli.json
+06/23/2022 05:45:07 - INFO - nlp.builder -   No config specified, defaulting to first: esnli/plain_text
+06/23/2022 05:45:07 - INFO - nlp.info -   Loading Dataset Infos from /opt/conda/lib/python3.8/site-packages/nlp/datasets/esnli/143e9598bb0a19a5adf08155d7a1c3c42a632bfac18a8899ef8d9a7ff48aee53
+06/23/2022 05:45:07 - INFO - nlp.builder -   Overwrite dataset info from restored data version.
+06/23/2022 05:45:07 - INFO - nlp.info -   Loading Dataset info from /root/.cache/huggingface/datasets/esnli/plain_text/0.0.2/143e9598bb0a19a5adf08155d7a1c3c42a632bfac18a8899ef8d9a7ff48aee53
+06/23/2022 05:45:07 - INFO - nlp.builder -   Reusing dataset esnli (/root/.cache/huggingface/datasets/esnli/plain_text/0.0.2/143e9598bb0a19a5adf08155d7a1c3c42a632bfac18a8899ef8d9a7ff48aee53)
+06/23/2022 05:45:07 - INFO - nlp.builder -   Constructing Dataset for split train, validation, test, from /root/.cache/huggingface/datasets/esnli/plain_text/0.0.2/143e9598bb0a19a5adf08155d7a1c3c42a632bfac18a8899ef8d9a7ff48aee53
+06/23/2022 05:45:07 - INFO - nlp.utils.info_utils -   All the checksums matched successfully for post processing resources
+06/23/2022 05:45:07 - INFO - nlp.utils.info_utils -   All the checksums matched successfully for post processing resources
+06/23/2022 05:45:07 - INFO - nlp.utils.info_utils -   All the checksums matched successfully for post processing resources
+06/23/2022 05:45:07 - INFO - nlp.arrow_dataset -   Caching processed dataset at /root/.cache/huggingface/datasets/esnli/plain_text/0.0.2/143e9598bb0a19a5adf08155d7a1c3c42a632bfac18a8899ef8d9a7ff48aee53/cache-aa0506d4d08eeb984499720d6e4c51af.arrow
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 549367/549367 [03:10<00:00, 2890.17it/s]
+06/23/2022 05:48:17 - INFO - nlp.arrow_writer -   Done writing 549367 examples in 961588733 bytes /root/.cache/huggingface/datasets/esnli/plain_text/0.0.2/143e9598bb0a19a5adf08155d7a1c3c42a632bfac18a8899ef8d9a7ff48aee53/tmp20uzcmpv.
+06/23/2022 05:48:17 - INFO - nlp.arrow_dataset -   Caching processed dataset at /root/.cache/huggingface/datasets/esnli/plain_text/0.0.2/143e9598bb0a19a5adf08155d7a1c3c42a632bfac18a8899ef8d9a7ff48aee53/cache-f813fbfe20ba3f13fd892e7848e568ed.arrow
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 9842/9842 [00:03<00:00, 2871.85it/s]
+06/23/2022 05:48:20 - INFO - nlp.arrow_writer -   Done writing 9842 examples in 19318296 bytes /root/.cache/huggingface/datasets/esnli/plain_text/0.0.2/143e9598bb0a19a5adf08155d7a1c3c42a632bfac18a8899ef8d9a7ff48aee53/tmpynzbgjt8.
+06/23/2022 05:48:20 - INFO - nlp.arrow_dataset -   Caching processed dataset at /root/.cache/huggingface/datasets/esnli/plain_text/0.0.2/143e9598bb0a19a5adf08155d7a1c3c42a632bfac18a8899ef8d9a7ff48aee53/cache-dd14ec77022fc43579127decca0c5c82.arrow
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 9824/9824 [00:03<00:00, 2855.12it/s]
+06/23/2022 05:48:24 - INFO - nlp.arrow_writer -   Done writing 9824 examples in 19268913 bytes /root/.cache/huggingface/datasets/esnli/plain_text/0.0.2/143e9598bb0a19a5adf08155d7a1c3c42a632bfac18a8899ef8d9a7ff48aee53/tmpq2kmek0y.
+06/23/2022 05:48:24 - INFO - __main__ -   ****LOG****
+06/23/2022 05:48:24 - INFO - __main__ -   549367
+06/23/2022 05:48:24 - INFO - __main__ -   9842
+06/23/2022 05:48:24 - INFO - __main__ -   9824
+06/23/2022 05:48:25 - INFO - __main__ -   *** Predict on test set***
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 9824/9824 [24:20<00:00,  6.72it/s]
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 9824/9824 [00:01<00:00, 8744.66it/s]
+06/23/2022 06:12:47 - INFO - __main__ -   Test Accuracy: 87.723941
+06/23/2022 06:12:47 - INFO - __main__ -   *** Predict on dev set***
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 9842/9842 [24:15<00:00,  6.76it/s]
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 9842/9842 [00:01<00:00, 8963.52it/s]
+06/23/2022 06:37:03 - INFO - __main__ -   Dev Accuracy: 88.162975
+06/23/2022 06:37:03 - INFO - __main__ -     dev_acc = 88.16297500508027
+06/23/2022 06:37:03 - INFO - __main__ -     test_acc = 87.72394136807817
+06/23/2022 06:37:03 - INFO - __main__ -   Git branch: main
+06/23/2022 06:37:03 - INFO - __main__ -   Git hash: 502e6d8130c334e9c99cb18fa6099ca85d3ad21e
+06/23/2022 06:37:03 - INFO - __main__ -   Save path: models/062222_183837
+06/23/2022 06:37:03 - INFO - __main__ -   total predict time: 0.8107 hours
+06/23/2022 06:37:03 - INFO - __main__ -   TOTAL SCRIPT TIME: 0.8668 hours

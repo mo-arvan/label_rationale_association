@@ -4,7 +4,16 @@
 
 Download the file from URL, then load the docker image using the command below:
 
-```
-bash
-docker load --input image_name.tar
+
+
+```bash
+cat rep-lra-part-* > rep-lra.tar
+docker load --input lra_image.tar
+
+docker run --rm  --gpus all -v ${PWD}:/workspace -it lra_image bash
+
+# inside the container, run 
+
+. ./artifact/scripts/train.sh
+
 ```
